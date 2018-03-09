@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="gwd_"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>
+Clicks
+</title>
+<script>
+function rcl(e){
+	if (!e) e = window.event;
+	document.f1.t2.value += "[RIGHT_CLICK]";
+}
+function dcl(e){
+	if (!e) e = window.event;
+	document.f1.t2.value += "[DOUBLE_CLICK]";
+}
+function cl(e){
+	if (!e) e = window.event;
+	document.f1.t2.value += "[CLICK]";
+}
+function onclick1(s){
+	document.f1.t2.value = "onclick_" + s;
+}
+function onchange1(s){    
+	document.f1.t2.value = "onchange_" + s;
+}
+</script><style></style></head>
+
+
+
+<body>
+<form name="f1">
+<textarea name="t2" style="width:200px;height:100px;"></textarea><br>
+<input onclick="document.f1.t2.value=''" value="Clear" name="t1" type="button"><br><br><br>
+<div ondblclick="dcl(event)">dbl click me</div>
+<input value="dbl click me" ondblclick="dcl(event)" type="button"><br>
+<input value="click me" onclick="cl(event)" type="button"><br>
+<div oncontextmenu="rcl(event)">right click me</div>
+<input value="right click me" oncontextmenu="rcl(event)" type="button"><br>
+
+<br><input value="disable1" disabled="disabled" type="button"><br>
+
+<br><br><br>
+
+<input value="Click me" onclick="onclick1('c1')" onchange="onchange1('c1')" type="checkbox">
+<input name="r1" value="Click me" onclick="onclick1('r1')" onchange="onchange1('r1')" type="radio">
+<input name="r1" value="Click me" onclick="onclick1('r11')" onchange="onchange1('r11')" type="radio">
+
+
+</form>
+
+<img src="Clicks_files/add.gif" onclick="cl(event)" ondblclick="dcl(event)">
+
+<br><br>
+<ul>
+<li style=""><a tabindex="0" style=""><label class="checkbox" style=""><input value="SMC2" type="checkbox">SMC 2 Label</label></a></li>
+</ul>
+
+
+
+<div id="GWDANG_HAS_BUILT"></div></body></html>

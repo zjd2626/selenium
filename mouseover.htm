@@ -1,0 +1,62 @@
+<html class="gwd_"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>
+
+    </title>
+<style></style></head>
+
+<body>
+
+<style>
+    span {
+        background-color: red;
+    }
+
+    a:hover {
+        background-color: green;
+    }
+
+    a:hover span {
+        background-color: green;
+    }
+</style>
+
+<a href="http://sahitest.com/demo/x"><span>
+Hi Kamlesh
+</span></a>
+<br>
+<script type="text/javascript">
+    function overme(b) {
+        var t1 = document.f1.t1;
+        t1.value = b?"Mouse moved":"";
+    }
+    
+function showMouseOver(e){
+	if (!e) e = window.event;
+	var el = document.getElementById("result");
+	var s = "";
+	if (e.ctrlKey) s += "<ctrl>";
+	if (e.altKey) s += "<alt>";
+	if (e.shiftKey) s += "<shift>";
+	if (e.metaKey) s += "<meta>";
+	el.value = s + "mouseOver";
+}
+</script>
+
+<form name="f1">
+    <input name="b1" value="Write on hover" onmouseover="overme(true)" type="button"><br><br>
+    <input name="b1" value="Blank on hover" onmouseover="overme(false)" type="button"><br><br>
+    <input name="t1" type="text">
+</form>
+
+<div onmouseover="showMouseOver(event)" style="height:100px;width:300px;border:1px solid gray;">
+<div style=";padding:35px;text-align:center">Experiment Zone MouseOver</div>
+</div>
+<br>
+<input id="result" type="text">
+<br>
+<a href="http://sahitest.com/demo/index.htm">Back</a>
+
+
+
+<div id="GWDANG_HAS_BUILT"></div></body></html>

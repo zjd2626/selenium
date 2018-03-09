@@ -1,0 +1,50 @@
+<html class="gwd_"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>
+
+</title>
+    <script type="text/javascript">
+        function f(e){
+        	if(document.getElementById("r1").checked)
+        	{document.f1.t1.value = 'key upped charCode=['+e.charCode+"] keyCode=["+e.keyCode+"] "+combo(e);}
+        }
+         function g(e){
+        	if (document.getElementById("r2").checked)
+        	{document.f1.t1.value = 'key downed charCode=['+e.charCode+"] keyCode=["+e.keyCode+"] "+combo(e);}
+        }
+         function h(e){
+        	if(document.getElementById("r3").checked)
+        	{document.f1.t1.value = 'key pressed charCode=['+e.charCode+"] keyCode=["+e.keyCode+"] "+combo(e);}
+        }
+
+        function combo(e){
+            if (e.ctrlKey) return "CTRL";
+            if (e.altKey) return "ALT";
+            if (e.shiftKey) return "SHIFT";
+            if (e.metaKey) return "META";
+            return "NONE"
+        }
+
+    </script>
+
+<style></style></head>
+
+<body>
+
+<form name="f1" method="post" onsubmit="document.f1.t3.value='submitted';return false">
+
+See result: <input name="t1" size="70" type="text"><br><br>
+Enter Here: <input onkeyup="f(event)" onkeydown="g(event)" onkeypress="h(event)" name="t2" size="70" type="text"><br><br>
+Check submit: <input name="t3" size="70" value="Loaded" onclick="document.f1.t3.value=''" type="text"><br><br>
+<input value="Submit" type="submit">
+
+</form>
+
+<label> Key Up <input id="r1" name="a" type="radio"> </label><br>
+<label> Key Down <input id="r2" name="a" type="radio"> </label><br>
+<label> Key Press <input id="r3" name="a" type="radio"> </label>
+
+
+
+
+<div id="GWDANG_HAS_BUILT"></div></body></html>
