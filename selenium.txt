@@ -210,6 +210,8 @@ from selenium.webdriver.common.keys import Keys
 CONTROL可以和其他键合用，实现复制、剪切等功能
 SPACE可用来选中check box或者radio button
 
+2.ctrl+a 全选输入框内容
+driver.find_element_by_id("kw").send_keys(Keys.CONTROL,'a')
 
 -------------------------------------------------------------------
 
@@ -461,4 +463,62 @@ print input2.get_attribute('value')
 driver.quit()
 
 复制粘贴用WebElement< input >.send_keys()也能实现，大家可以试一下，也可以用更底层的方法，同时也是os弹框的处理办法之一的win32api，有兴趣也可以试试SendKeys、keybd_event
+
+
+5.通过键盘和鼠标操作实现将指定的图片鼠标右键下载保存图片操作
+
+使用selenium模拟鼠标和键盘操作:将鼠标放置图像上方，点击鼠标右键，然后键盘按V就可以保存了，核心代码如下：
+
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
+action = ActionChains(driver).move_to_element(element)#移动到该元素
+action.context_click(element)#右键点击该元素
+action.send_keys(Keys.ARROW_DOWN)#点击键盘向下箭头
+action.send_keys('v')#键盘输入V保存图
+action.perform()#执行保存
+
+
+
+---------------------------------------------------------------------
+网页上有时候遇到checkbox和radio，一般情况下这两种都是input标签，我们可以通过点击或者发送空格的方式进行选中
+
+检查某个框是否被选中:element.is_selected()
+
+试验网页代码见checkandradio.html：
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from time import sleep
+
+driver = webdriver.Firefox()
+driver.maximize_window()
+driver.get('file:///D:/checkboxandradio.html')
+
+# checkbox
+driver.find_element_by_xpath('//input[@value="cv1"]').click()  # click
+driver.find_element_by_xpath('//input[@value="cv2"]').send_keys(Keys.SPACE)  # send space
+
+if driver.find_element_by_xpath('//input[@value="cv2"]').is_selected():
+    print 'selected!'
+else:
+    print 'not yet!'
+
+# radio
+driver.find_element_by_xpath('//input[@value="rv1"]').send_keys(Keys.SPACE)  # send space
+sleep(1)
+driver.find_element_by_xpath('//input[@value="rv2"]').click()  # click
+
+if driver.find_element_by_xpath('//input[@value="rv1"]').is_selected():
+    print 'selected!'
+else:
+    print 'not yet!'
+
+sleep(1)
+driver.quit()
+
+
+检查某个框是否被选中:
+element.is_selected()
+
 
